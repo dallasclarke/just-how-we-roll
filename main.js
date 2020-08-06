@@ -32,12 +32,22 @@ const sortByNumber = function(arr) {
 /*******************
  * YOUR CODE BELOW *
  *******************/
-  // Inserting images of the dice to each empty img tag.
+  // Inserting the starting images of the dice to each empty img tag.
  document.querySelector('#d6-roll').src ="images/start/d6.png";
  document.querySelector('#double-d6-roll-1').src = 'images/start/d6.png';
  document.querySelector('#double-d6-roll-2').src = 'images/start/d6.png';
  document.querySelector('#d12-roll').src = 'images/start/d12.jpeg';
  document.querySelector('#d20-roll').src = 'images/start/d20.jpg';
+
+ // Setting mean & median to zero
+  document.querySelector('#d6-rolls-mean').innerText = '0';
+  document.querySelector('#d6-rolls-median').innerText = '0';
+  document.querySelector('#double-d6-rolls-mean').innerText = '0';
+  document.querySelector('#double-d6-rolls-median').innerText = '0';
+  document.querySelector('#d12-rolls-mean').innerText = '0';
+  document.querySelector('#d12-rolls-median').innerText = '0';
+  document.querySelector('#d20-rolls-mean').innerText = '0';
+  document.querySelector('#d20-rolls-median').innerText = '0';
 
  
  // Make function.
@@ -50,7 +60,7 @@ const sortByNumber = function(arr) {
   sixes.push(result);
 
   document.querySelector('#d6-roll').src = `images/d6/${result}.png`
-  document.querySelector('#d6-rolls-mean').innerText = mean(sixes).toFixed();
+  document.querySelector('#d6-rolls-mean').innerText = mean(sixes).toFixed(2);
   document.querySelector('#d6-rolls-median').innerText = median(sixes);
 }
 
@@ -61,7 +71,7 @@ const doubleSix = function() {
 
   document.querySelector('#double-d6-roll-1').src = `images/d6/${diceOne}.png`;
   document.querySelector('#double-d6-roll-2').src = `images/d6/${diceTwo}.png`;
-  document.querySelector('#double-d6-rolls-mean').innerText = mean(doubleSixes).toFixed()
+  document.querySelector('#double-d6-rolls-mean').innerText = mean(doubleSixes).toFixed(2)
   document.querySelector('#double-d6-rolls-median').innerText = median(doubleSixes)
 }
 
@@ -70,7 +80,7 @@ const rollTwelve = function() {
   twelves.push(roll);
 
   document.querySelector('#d12-roll').src = `images/numbers/${roll}.png`
-  document.querySelector('#d12-rolls-mean').innerText = mean(twelves).toFixed();
+  document.querySelector('#d12-rolls-mean').innerText = mean(twelves).toFixed(2);
   document.querySelector('#d12-rolls-median').innerText = median(twelves)
 }
 
@@ -79,7 +89,7 @@ const rollTwenty = function() {
   twenties.push(roll);
 
   document.querySelector('#d20-roll').src = `images/numbers/${roll}.png`;
-  document.querySelector('#d20-rolls-mean').innerText = mean(twenties).toFixed();
+  document.querySelector('#d20-rolls-mean').innerText = mean(twenties).toFixed(2);
   document.querySelector('#d20-rolls-median').innerText = median(twenties);
   
 }
@@ -97,18 +107,28 @@ document.querySelector('#reset-button').addEventListener('click', resetFunc);
 /******************
  * RESET FUNCTION *
  ******************/
+
 function resetFunc() {
   sixes.length = 0;
   doubleSixes.length = 0;
   twelves.length = 0;
   twenties.length = 0;
   
-
   document.querySelector('#d6-roll').src ="images/start/d6.png";
   document.querySelector('#double-d6-roll-1').src = 'images/start/d6.png';
   document.querySelector('#double-d6-roll-2').src = 'images/start/d6.png';
   document.querySelector('#d12-roll').src = 'images/start/d12.jpeg';
   document.querySelector('#d20-roll').src = 'images/start/d20.jpg';
+  document.querySelector('#d6-rolls-mean').innerText = '0';
+  document.querySelector('#d6-rolls-median').innerText = '0';
+  document.querySelector('#double-d6-rolls-mean').innerText = '0';
+  document.querySelector('#double-d6-rolls-median').innerText = '0';
+  document.querySelector('#d12-rolls-mean').innerText = '0';
+  document.querySelector('#d12-rolls-median').innerText = '0';
+  document.querySelector('#d20-rolls-mean').innerText = '0';
+  document.querySelector('#d20-rolls-median').innerText = '0';
+
+  
 
 }
 
@@ -134,8 +154,12 @@ function median(arr) {
   } else {
     median = arr[(count -1) / 2];
   }
-  return median.toFixed();
+  return median.toFixed(2);
 }
+
+// Set animation 
+
+
 
 
 
